@@ -14,6 +14,12 @@ class TransferCron extends Cron
     protected $sOldHost = '';
     protected $sNewHost = '';
 
+    /**
+     * Construct
+     *
+     * @param string $sLockFile
+     * @param array $argv
+     */
     public function __construct($sLockFile = null, $argv = array())
     {
         if (!isset($argv[1]) || !isset($argv[2])) {
@@ -55,6 +61,13 @@ class TransferCron extends Cron
         }
     }
 
+    /**
+     * Update table
+     *
+     * @param string $sConfigTableName
+     * @param array $aFields
+     * @return void
+     */
     protected function UpdateTable($sConfigTableName, $aFields)
     {
         $sTableName = Config::Get($sConfigTableName);
